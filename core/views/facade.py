@@ -299,6 +299,20 @@ class RegenerateApiKey(views.APIView):
             'secret_key': profile.secret_key,
         })
 
+class GetApiKey(views.APIView):
+    permission_classes = [
+        IsAuthenticated,
+    ]
+
+    @extend_schema(
+        exclude=True,
+    )
+    def post(self, request):
+        profile = request.user.profile
+        return Response(data={
+            'api_key': profile.api_key,
+            'secret_key': profile.secret_key,
+        })
 
 class PhoneVerification(views.APIView):
     throttle_classes = (PhoneVerificationThrottle,)

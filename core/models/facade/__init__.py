@@ -44,6 +44,7 @@ def generate_remittance_id():
     return generate_random_string(length=12).upper()
 
 
+# @notes: User Model Profile
 class Profile(BaseModel):
 
     INTERFACE_ADVANCED = 'advance'

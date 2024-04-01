@@ -79,6 +79,7 @@ class ExchangeClientSession(BaseHttpSession):
         r = self.get(url)
         return r.json()['balance']
 
+    # @notes: login flow
     def login(self, username, password, secret=None):
         url = self.url('/auth/login/')
         googlecode = ''

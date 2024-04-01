@@ -1,7 +1,7 @@
 from django.urls import path
 from django.urls.conf import include
 
-from core.views.facade import MessagesView
+from core.views.facade import GetApiKey, MessagesView
 from core.views.facade import RegenerateApiKey
 from core.views.facade import SourceOfFundsViewSet
 from core.views.facade import UserProfileView
@@ -18,6 +18,7 @@ from core.views.facade import resend_email_confirmation_mail
 from core.views.facade import save_user_language
 from core.views.facade import set_user_2fa
 
+# @notes: probably public api url
 urlpatterns = [
     path(r'auth/registration/', include('dj_rest_auth.registration.urls')),
     path(r'auth/', include('dj_rest_auth.urls')),
@@ -35,6 +36,7 @@ urlpatterns = [
     path(r'messages/', MessagesView.as_view({'get': 'list'})),
     path(r'profile/', UserProfileView.as_view(actions={'get': 'retrieve', 'post': 'update', 'put': 'update'})),
     path(r'regenerate-api-key/', RegenerateApiKey.as_view()),
+    path(r'get-api-key/', GetApiKey.as_view()),
     path(r'phone-verify/check/', CodePhoneVerification.as_view()),
     path(r'phone-verify/', PhoneVerification.as_view()),
     path(r'sof', SourceOfFundsViewSet.as_view(actions={'get': 'retrieve', 'post': 'create'})),

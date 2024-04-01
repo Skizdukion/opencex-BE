@@ -19,7 +19,7 @@ from public_api.views.common import server_time
 router = DefaultRouter(trailing_slash=False)
 router.register(r'order', OrdersApiViewSet, basename='order')
 
-
+# @notes: Hmac authenticate
 urlpatterns = [
     url(r'docs$', render_docs),
     url(r'servertime$', server_time),

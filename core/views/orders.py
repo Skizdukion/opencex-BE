@@ -55,6 +55,8 @@ from lib.views import ExceptionHandlerMixin
 log = logging.getLogger(__name__)
 
 
+
+# @notes: Order Api
 class OrdersView(ExceptionHandlerMixin,
                  mixins.CreateModelMixin,
                  mixins.DestroyModelMixin,
