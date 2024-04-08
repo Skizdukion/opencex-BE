@@ -429,7 +429,7 @@ class TradesView(NoAuthMixin, ThrottlingViewMixin, APIView):
 class ValidateHmacAuthenticate(ThrottlingViewMixin, APIView):
     authentication_classes = (HMACAuthentication,)
 
-    def get(self):
+    def get(self, _):
         """Test Hmac authenticate"""
         return Response(status=status.HTTP_200_OK)
 
