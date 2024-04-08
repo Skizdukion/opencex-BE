@@ -426,19 +426,12 @@ class TradesView(NoAuthMixin, ThrottlingViewMixin, APIView):
 ######## REQUIRES API KEY #############
 
 
-# class ValidateHmacAuthenticate(ThrottlingViewMixin, APIView):
-#     authentication_classes = (HMACAuthentication,)
+class ValidateHmacAuthenticate(ThrottlingViewMixin, APIView):
+    authentication_classes = (HMACAuthentication,)
 
-#     def get(self, _):
-#         """Test Hmac authenticate"""
-#         return Response(status=status.HTTP_200_OK)
-
-
-@extend_schema(exclude=True)
-@api_view(["GET"])
-@permission_classes((HMACAuthentication,))
-def test_hmac(request):
-    return Response(status=status.HTTP_200_OK)
+    def get(self, _):
+        """Test Hmac authenticate"""
+        return Response(status=status.HTTP_200_OK)
 
 
 class BalancesListView(ThrottlingViewMixin, APIView):

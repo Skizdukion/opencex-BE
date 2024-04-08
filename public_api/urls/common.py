@@ -1,7 +1,7 @@
 from django.conf.urls import url
 from rest_framework.routers import DefaultRouter
 
-from public_api.views.common import AssetsView, test_hmac
+from public_api.views.common import AssetsView, ValidateHmacAuthenticate
 from public_api.views.common import BalancesListView
 from public_api.views.common import InfoView
 from public_api.views.common import MarketsListView
@@ -34,7 +34,9 @@ urlpatterns = [
     url(r"otcprice$", get_otc_price),
     # url(r'balance/(?P<currency>[\w-]+)$', BalancesListView.as_view()),  # balances by wallets (api key)
     url(r"balance$", BalancesListView.as_view()),  # balances by wallets (api key)
-    url(r"validate-hmac$", test_hmac),  # balances by wallets (api key)
+    url(
+        r"validate-hmac$", ValidateHmacAuthenticate.as_view()
+    ),  # balances by wallets (api key)
     url(r"order/update/", OrderUpdateApiView.as_view()),
 ]
 
